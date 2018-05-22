@@ -204,3 +204,4 @@ java.lang.UnsupportedOperationException: Possible CSRF attack
 2018-05-22 17:13:32,641 | WARN  | Transport Connection to: tcp://127.0.0.1:52582 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:52582@61616
 2018-05-22 17:14:56,519 | WARN  | Transport Connection to: tcp://127.0.0.1:52668 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:52668@61616
 2018-05-22 17:30:15,841 | WARN  | Transport Connection to: tcp://127.0.0.1:53290 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:53290@61616
+2018-05-22 17:45:44,563 | WARN  | Transport Connection to: tcp://127.0.0.1:53248 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:53248@61616

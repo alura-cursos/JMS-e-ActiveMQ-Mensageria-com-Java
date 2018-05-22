@@ -24,12 +24,15 @@ public class TesteProdutorFila {
 		
 		MessageProducer producer = session.createProducer(fila);
 		
+		Message message = session.createTextMessage("<pedido><id>13</id></pedido>");
+		producer.send(message);
 		
-		for (int i = 0; i < 1000; i++) {
-			
-			Message message = session.createTextMessage("<pedido><id>"  +  i + "</id></pedido>");
-			producer.send(message);
-		}
+		
+//		for (int i = 0; i < 1000; i++) {
+//			
+//			Message message = session.createTextMessage("<pedido><id>"  +  i + "</id></pedido>");
+//			producer.send(message);
+//		}
 				
 		//new Scanner(System.in).nextLine();
 		

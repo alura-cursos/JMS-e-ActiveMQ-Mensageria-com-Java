@@ -1,5 +1,6 @@
 package br.com.caelum.jms;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import javax.jms.Connection;
@@ -9,10 +10,13 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
+import javax.jms.ObjectMessage;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.jms.Topic;
 import javax.naming.InitialContext;
+
+import br.com.caelum.modelo.Pedido;
 
 public class TesteConsumidorTopicoComercial {
 
@@ -26,7 +30,7 @@ public class TesteConsumidorTopicoComercial {
 		connection.setClientID("comercial");
 		
 		connection.start();
-		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+		final Session session = connection.createSession(true, Session.SESSION_TRANSACTED);
 		
 		Topic topico = (Topic) context.lookup("loja");
 		
@@ -37,11 +41,18 @@ public class TesteConsumidorTopicoComercial {
 			@Override
 			public void onMessage(Message message) {
 
-				TextMessage textMessage = (TextMessage)message;
+				ObjectMessage objectMessage = (ObjectMessage)message;
 				
 				try {
-					System.out.println(textMessage.getText());
+					Pedido pedido = (Pedido) objectMessage.getObject();
+					System.out.println(pedido.getCodigo());
 				} catch (JMSException e) {
+					e.printStackTrace();
+				}
+				try {
+					session.commit();
+				} catch (JMSException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
